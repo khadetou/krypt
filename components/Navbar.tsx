@@ -25,7 +25,7 @@ const Navbar: React.FC<NavbarProps> = ({ toggleMenu, setToggleMenu }) => {
 
     return (
         <nav className='w-full flex md:justify-center justify-between items-center p-4'>
-            <div className='md:flex-[0.5] justify-center flex-initial justify-items-center'>
+            <div className='md:flex-[0.5] justify-center flex-initial justify-items-center '>
                 <div className="w-32 cursor-pointer" onClick={() => setToggleMenu(false)}>
                     <Image src="/images/logo.svg" alt="logo" width="369" height="94" />
                 </div>
