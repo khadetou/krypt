@@ -58,8 +58,6 @@ const Navbar: React.FC<NavbarProps> = ({ toggleMenu, setToggleMenu }) => {
                         <NavbarItems key={idx} title={item} classProps='my-2 text-lg' />
                     ))}
                 </ul>
-
-
             </div>
         </nav>
     )
