@@ -1,4 +1,4 @@
-import { NextPage } from "next";
+
 import Head from "next/head";
 
 interface MetaProps {
@@ -6,7 +6,7 @@ interface MetaProps {
     description?: string;
     keywords?: string;
 }
-const Meta: NextPage<MetaProps> = ({ title, description, keywords }) => {
+const Meta: React.FC<MetaProps> = ({ title, description, keywords }) => {
     return (
         <Head>
             <meta charSet="utf-8" />
