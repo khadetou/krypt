@@ -2,7 +2,8 @@ import { qualities } from "./qualities";
 import { SiEthereum } from 'react-icons/si'
 import { BsInfoCircle } from 'react-icons/bs'
 import { Loader } from ".";
-
+import { useContext } from "react";
+import { TransactionContext } from "../context/TransactionContext";
 
 
 interface InputProps {
@@ -15,6 +16,7 @@ interface InputProps {
 
 
 const Input: React.FC<InputProps> = ({ placeholder, type, name, value, handleChange }) => {
+
     return (
         <input
             placeholder={placeholder}
@@ -30,11 +32,9 @@ const Input: React.FC<InputProps> = ({ placeholder, type, name, value, handleCha
 
 
 const Welcome = () => {
+    const { connectWallet, currentAccount } = useContext(TransactionContext);
 
-    const connectWallet = () => {
-
-    }
-
+    console.log(currentAccount);
     const handleSubmit = () => {
 
     }
@@ -48,13 +48,14 @@ const Welcome = () => {
                     <p className="text-left mt-5 text-white font-light md:w-9/12 w-11/12 text-base">
                         Explore the crypto world. Buy and sell krypto currencies easily on Krypto.
                     </p>
-                    <button
+                    {!currentAccount && (<button
                         type="button"
                         onClick={connectWallet}
                         className="flex flex-row justify-center items-center my-5 bg-[#2952e3] p-3 rounded-full hover:bg-[#2546bd] text-white font-bold text-lg cursor-pointer"
                     >
                         <p className="text-white text-base font-semibold ">Connect Wallet</p>
-                    </button>
+                    </button>)
+                    }
 
 
                     <div
