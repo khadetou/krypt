@@ -1,4 +1,4 @@
-import type { GetServerSideProps, NextPage } from 'next';
+import type { NextPage } from 'next';
 import { Services, Transactions } from '../components';
 const Home: NextPage = () => {
   return (
