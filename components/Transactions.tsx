@@ -1,5 +1,7 @@
 import { TransactionContext } from "@/context/TransactionContext";
+import useFetch from "hooks/useFetch";
 import { FC, useContext } from "react";
+import Image from "next/image";
 import dummyData from "utils/data";
 import { shortenAddress } from "utils/shortendAddress";
 
@@ -13,6 +15,11 @@ interface TransactionCardProps {
     url: string;
 }
 const TransactionCard: FC<TransactionCardProps> = ({ addressTo, addressFrom, timestamp, message, keyword, amount, url }) => {
+
+    const gifUrl = useFetch({ keyword });
+    console.log(gifUrl);
+
+
     return (
         <div className="bg-[#181918] m-4 flex-1 flex
     2xl:min-w-[450px]
@@ -38,10 +45,19 @@ const TransactionCard: FC<TransactionCardProps> = ({ addressTo, addressFrom, tim
                             <p className="text-white text-base">Message: {message}</p>
                         </>
                     )}
+                </div>
 
-                    <div className="bg-black p-3 px-5 w-max rounded-3xl -mt-5 shadow-2xl">
-                        <p className="text-[#37c7da] font-bold">{timestamp}</p>
-                    </div>
+                <div className="w-full h-64 2xl:h-96 rounded-md shadow-lg relative">
+                    <Image
+                        src={gifUrl || url}
+                        alt="gif"
+                        layout="fill"
+                        objectFit="cover"
+                    />
+                </div>
+
+                <div className="bg-black p-3 px-5 w-max rounded-3xl -mt-5 shadow-2xl z-10">
+                    <p className="text-[#37c7da] font-bold">{timestamp}</p>
                 </div>
             </div>
         </div>
