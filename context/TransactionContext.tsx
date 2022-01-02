@@ -80,9 +80,7 @@ export const TransactionProvider: FC = ({ children }) => {
     const checkIfWalletIsConnected = async () => {
         try {
             if (!ethereum) return alert('Please Install Metamask');
-            const transactionContracts = getEthereumContract();
             const accounts = await ethereum.request({ method: 'eth_accounts' });
-            // const currentTransactionCount = await transactionContracts.getTransactionCount();
             if (accounts.length) {
                 setCurrentAccount(accounts[0]);
             } else {

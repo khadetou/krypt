@@ -2,7 +2,7 @@ import { qualities } from "./qualities";
 import { SiEthereum } from 'react-icons/si'
 import { BsInfoCircle } from 'react-icons/bs'
 import { Loader } from ".";
-import { useContext, useEffect } from "react";
+import { useContext } from "react";
 import { TransactionContext } from "../context/TransactionContext";
 import { shortenAddress } from "utils/shortendAddress";
 
@@ -44,9 +44,7 @@ const Welcome = () => {
         sendTransaction();
     }
 
-    useEffect(() => {
-        console.log("currentAccoun");
-    }, [currentAccount]);
+
 
 
     //reduce the current address lenght 
