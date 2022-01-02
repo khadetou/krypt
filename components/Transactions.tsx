@@ -17,7 +17,6 @@ interface TransactionCardProps {
 const TransactionCard: FC<TransactionCardProps> = ({ addressTo, addressFrom, timestamp, message, keyword, amount, url }) => {
 
     const gifUrl = useFetch({ keyword });
-    console.log(gifUrl);
 
 
     return (
@@ -48,12 +47,13 @@ const TransactionCard: FC<TransactionCardProps> = ({ addressTo, addressFrom, tim
                 </div>
 
                 <div className="w-full h-64 2xl:h-96 rounded-md shadow-lg relative">
-                    <Image
-                        src={gifUrl || url}
-                        alt="gif"
-                        layout="fill"
-                        objectFit="cover"
-                    />
+                    {gifUrl &&
+                        <Image
+                            src={gifUrl || url}
+                            alt="gif"
+                            layout="fill"
+                            objectFit="cover"
+                        />}
                 </div>
 
                 <div className="bg-black p-3 px-5 w-max rounded-3xl -mt-5 shadow-2xl z-10">
@@ -66,7 +66,7 @@ const TransactionCard: FC<TransactionCardProps> = ({ addressTo, addressFrom, tim
 
 const Transactions = () => {
 
-    const { currentAccount } = useContext(TransactionContext);
+    const { currentAccount, transactions } = useContext(TransactionContext);
 
     return (
         <div className="flex w-full justify-center items-center 2xl:px-20 gradient-bg-transactions">
@@ -81,7 +81,7 @@ const Transactions = () => {
 
                 <div className="flex flex-wrap justify-center items-center mt-10">
                     {
-                        dummyData.reverse().map((transaction, index) => (
+                        transactions.reverse().map((transaction, index) => (
                             <TransactionCard {...transaction} key={index} />
                         ))
                     }
