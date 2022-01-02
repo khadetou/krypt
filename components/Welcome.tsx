@@ -2,8 +2,9 @@ import { qualities } from "./qualities";
 import { SiEthereum } from 'react-icons/si'
 import { BsInfoCircle } from 'react-icons/bs'
 import { Loader } from ".";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { TransactionContext } from "../context/TransactionContext";
+import { shortenAddress } from "utils/shortendAddress";
 
 
 
@@ -42,6 +43,15 @@ const Welcome = () => {
         if (!addressTo || !amount || !keyword || !message) return;
         sendTransaction();
     }
+
+    useEffect(() => {
+        console.log("currentAccoun");
+    }, [currentAccount]);
+
+
+    //reduce the current address lenght 
+
+
     return (
         <div className="w-full flex justify-center items-center">
             <div className="flex mf:flex-row flex-col items-start justify-between md:p-20 py-12 px-4">
@@ -85,7 +95,7 @@ const Welcome = () => {
                             </div>
                             <div>
                                 <p className="text-white text-sm font-light">
-                                    Address
+                                    {shortenAddress(currentAccount)}
                                 </p>
                                 <p className="text-white font-semibold text-lg mt-1">
                                     Ethereum

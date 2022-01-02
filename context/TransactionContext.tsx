@@ -103,7 +103,9 @@ export const TransactionProvider: FC = ({ children }) => {
         try {
             if (!ethereum) return alert('Please Install Metamask');
             const accounts = await ethereum.request({ method: 'eth_requestAccounts' });
+
             setCurrentAccount(accounts[0]);
+
         } catch (error) {
             console.log(error);
             throw new Error("No ethereum object.");
