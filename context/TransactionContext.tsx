@@ -108,6 +108,7 @@ export const TransactionProvider: FC = ({ children }) => {
         try {
             if (!ethereum) return alert('Please Install Metamask');
             const accounts = await ethereum.request({ method: 'eth_accounts' });
+
             if (accounts.length) {
                 setCurrentAccount(accounts[0]);
                 getAllTransactions();
@@ -144,8 +145,10 @@ export const TransactionProvider: FC = ({ children }) => {
         try {
             if (!ethereum) return alert('Please Install Metamask');
             const accounts = await ethereum.request({ method: 'eth_requestAccounts' });
-
+            console.log(accounts)
             setCurrentAccount(accounts[0]);
+
+
 
         } catch (error) {
             console.log(error);
